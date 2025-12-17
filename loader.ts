@@ -1,12 +1,14 @@
 'use client'
 
-export default function myImageLoader({ src, width, quality }: { src: string, width: number, quality?: number }) {
-  // Ganti 'test-github-pages' dengan nama repo Anda
+export default function myImageLoader({ src }: { src: string }) {
   const repoName = 'test-github-pages'
   
-  // Jika src sudah mengandung http (gambar eksternal), jangan tambahkan prefix
+  // Jika src diawali dengan http, biarkan apa adanya
   if (src.startsWith('http')) return src
   
-  // Tambahkan nama repo di depan jalur gambar
-  return `/${repoName}${src}?w=${width}&q=${quality || 75}`
+  // Pastikan tidak ada double slash (//)
+  // Menghilangkan slash di awal src jika ada, lalu menggabungkannya
+  const cleanSrc = src.startsWith('/') ? src.slice(1) : src
+  
+  return `/${repoName}/${cleanSrc}`
 }
