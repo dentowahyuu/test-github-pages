@@ -1,13 +1,13 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
   output: 'export',
-  // Ini akan memastikan link CSS/JS dan Gambar menggunakan subfolder repo
   basePath: '/test-github-pages',
-  // Tambahkan ini agar folder /out/ di GitHub lebih terstruktur
-  trailingSlash: true, 
+  // assetPrefix memastikan CSS dan Gambar tidak hilang
+  assetPrefix: isProd ? '/test-github-pages' : '', 
   images: {
-    // Kita matikan loader custom agar kembali ke standar tapi dengan basePath
     unoptimized: true,
   },
   typescript: {
