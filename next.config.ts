@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   output: 'export',
   basePath: '/test-github-pages',
   // assetPrefix memastikan CSS dan Gambar tidak hilang
-  assetPrefix: isProd ? '/test-github-pages' : '', 
+  assetPrefix: isProd ? '/test-github-pages/' : '', 
   images: {
     unoptimized: true,
   },
